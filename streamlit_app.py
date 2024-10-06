@@ -44,7 +44,7 @@ header_text.write(
 
 ""
 
-col1, col2 = st.beta_columns([0.35, 0.65])
+col1, col2 = st.columns([0.35, 0.65])
 new_theme_clicked = col1.button("🔄 Generate new theme")
 theme_type = col2.radio("", ["Light theme", "Dark theme"])
 # spinner = st.empty()
@@ -56,11 +56,11 @@ theme_type = col2.radio("", ["Light theme", "Dark theme"])
 
 "---"
 
-quote = st.beta_container()
+quote = st.container()
 
 # Show current theme colors.
 locked = []
-columns = st.beta_columns(4)
+columns = st.columns(4)
 labels = ["backgroundColor", "secondaryBackgroundColor", "primaryColor", "textColor"]
 for column, label in zip(columns, labels):
     # c = column.color_picker(
@@ -96,7 +96,7 @@ def apply_theme_from_session_state():
         st.config.set_option("theme.textColor", st.session_state.textColor)
 
         # Trigger manual rerun (required to actually apply the theme to the app).
-        st.experimental_rerun()
+        st.rerun()
 
 
 def generate_new_theme():
@@ -292,7 +292,7 @@ def draw_all(
     )
     # st.multiselect("Pick a number", [1, 2, 3], key=key)
     # st.color_picker("Colors, colors, colors", key=key)
-    with st.beta_expander("Expand me!"):
+    with st.expander("Expand me!"):
         st.write("Hey there! Nothing to see here 👀 ")
     st.write("")
     # st.write("That's our progress on theming:")
